@@ -259,7 +259,7 @@ const resetPassword = async (req, res) => {
 let otp = Math.random();
 otp = otp * 1000000;
 otp = parseInt(otp);
-console.log("otp", otp);
+// console.log("otp",otp);
 
 //-------------- OTP Page ----------------------
 const otpget = (req, res) => {
@@ -1018,6 +1018,25 @@ if (userData.appliedCoupons.contains(code)) {
     next(error);
   }
 };
+const wallet = async (req, res, next) =>{
+  try {
+    let wallet = await userModel.aggregate(
+      { $match: { _id: mongoose.Types.ObjectId(req.session.user_id) } },
+      {
+        $lookup: {
+          from: "productdatas",
+          localField: "wallet",
+          foreignField: "_id",
+          as: "walletData",
+        },
+      },
+    );
+  } catch (error) {
+    next(error);
+  }
+};
+
+
 module.exports = {
   loadRegister,
   insertUser,
@@ -1059,4 +1078,5 @@ module.exports = {
   shopp,
   account,
   couponValidate,
+  wallet
 };

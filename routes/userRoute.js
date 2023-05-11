@@ -80,5 +80,6 @@ router.get(
 );
 router.post("/forgot-password", userController.resetPassword);
 router.post("/couponvalidate", userController.couponValidate);
+router.post("/mywallet",userController.wallet);
 
 module.exports = router;

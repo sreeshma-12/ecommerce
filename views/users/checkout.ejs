@@ -147,7 +147,8 @@
 				
 			       	<div class="row">
 					<div class="col-lg-8">
-						<form method="post" action="/checkoutform" class="colorlib-form" class="colorlib-form">
+						<!-- <form method="post" action="/checkoutform" class="colorlib-form" class="colorlib-form"></form> -->
+						<form method="post"  class="colorlib-form" class="colorlib-form">
 							<h2>Billing Details</h2>
 		              	<div class="row">
 			               <div class="col-md-12">
@@ -295,7 +296,7 @@
           Apply Coupon
         </h5>
         <button
-          type="button"
+          type="button" 
           class="close"
           data-dismiss="modal"
           aria-label="Close"
@@ -326,7 +327,7 @@
               />
               <button
                 id="couponButton"
-                onclick="validatecoupon()"
+                type="submit"
                 style="width: 100px; height: 36px"
                 class="btn btn-success"
               >
@@ -343,8 +344,7 @@
             Code:
             <strong class="border p-1"> <%=coup.couponCode%></strong>
             <br />
-           
-			Min Purchase Amount: ₹<%=coup.minimumAmount %> <br /> 
+           Min Purchase Amount: ₹<%=coup.minimumAmount %> <br /> 
             Expires On: : <%=coup.expiryDate.toLocaleString() %>
           </div>
           <% } %>
@@ -418,7 +418,7 @@
                               </ul>
 						    </div> 
 					     </div> 
-				        </div>
+				      </div>
 			        </div> 
 						
 			           <div class="w-100"></div>
@@ -495,7 +495,7 @@
 				})
              });
 			 
-			 let orderData = await response.json();
+			let orderData = await response.json();
 			console.log(orderData);
 			var options = {
     "key": "rzp_test_MSPCtYdp5Zx6lY", // Enter the Key ID generated from the Dashboard
@@ -543,6 +543,6 @@ applyButton.classList.add("btn-hover");
 });
 </script>
 <!-- <%-include('../users/layouts/footer.ejs') -%> -->
-<script src="/javascript/couponValidate.js">
+<script src="/javascript/couponValidate.js" defer type="text/javascript">
 	
 </script>
