@@ -1009,8 +1009,10 @@ const couponValidate = async (req, res, next) => {
 const user = req.session.user_id;
 const code = req.body.couponCode;
 const userData = await userModel.findById(user)
- console.log(userData ,"DATA");
-if (userData.appliedCoupons.contains(code)) {
+ console.log(code ,"DATA");
+ const appliedCoupons = userData.appliedCoupons.map(item=>item.couponCode)
+ console.log("appliedCoupons",appliedCoupons);
+if (appliedCoupons.includes(code)) {
   res.json({ success: false, message: "Coupon Already Applied" });
 } else {
   res.json({ success: true, message: "Coupon is Valid." });

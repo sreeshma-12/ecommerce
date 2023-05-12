@@ -9,7 +9,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const couponCode = document.getElementById("couponCode").value;
-
+              console.log("code=",couponCode);
       fetch("/couponvalidate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

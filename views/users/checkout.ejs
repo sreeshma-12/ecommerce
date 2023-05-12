@@ -148,7 +148,7 @@
 			       	<div class="row">
 					<div class="col-lg-8">
 						<!-- <form method="post" action="/checkoutform" class="colorlib-form" class="colorlib-form"></form> -->
-						<form method="post"  class="colorlib-form" class="colorlib-form">
+						<div class="colorlib-form" class="colorlib-form">
 							<h2>Billing Details</h2>
 		              	<div class="row">
 			               <div class="col-md-12">
@@ -245,8 +245,7 @@
 							<ul>
 				 <% let subtotal = 0 %> 
 				  <% orderData.products.forEach((data) => {%> 
-					
-			 <% subtotal += data.price * data.quantity %> 
+				 <% subtotal += data.price * data.quantity %> 
 			<li>
 			 <span><%= data.name %></span><span><%= data.quantity %> x <%= data.price%></span> 
 						</li>
@@ -273,7 +272,7 @@
 									  </div> -->
 	<!--  just have hided -->
     <!-- coupon modal copied -->
-     <p
+    <!-- <p
 	class="text-success"
 	id="applyCoupon"
 	data-toggle="modal"
@@ -329,7 +328,7 @@
                 id="couponButton"
                 type="submit"
                 style="width: 100px; height: 36px"
-                class="btn btn-success"
+                class="btn btn-success"cou
               >
                 Check
               </button>
@@ -368,10 +367,10 @@
                       </div>
                       </div>
                         </div>
-                           </div>  
+                           </div>   -->
                           <!--coupon modal ended -->
 <!-- ----------------------------------------       test         ---------------- -->
-<!-- <p class="text-success" id="applyCoupon" data-toggle="modal" data-target="#exampleModal" class="ps-2 btn btn-success btn-hover">Apply Coupon</p>
+ <p class="text-success" id="applyCoupon" data-toggle="modal" data-target="#exampleModal" class="ps-2 btn btn-success btn-hover">Apply Coupon</p>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -383,6 +382,7 @@
       </div>
       <div class="modal-body">
         <div class="row">
+           
           <div class="col-md-12">
             <h2 class="text-primary text-center mb-3">Get up to 60% off</h2>
           </div>
@@ -398,10 +398,38 @@
             </form>
           </div>
            </div>
+		   <div>
+		<% for(let coup of coupons){ %>
+          <div class="mt-3">
+            Code:
+            <strong class="border p-1"> <%=coup.couponCode%></strong>
+            <br />
+           Min Purchase Amount: ₹<%=coup.minimumAmount %> <br /> 
+            Expires On: : <%=coup.expiryDate.toLocaleString() %>
+          </div>
+          <% } %>
+        </div>
+		<div class="modal-footer justify-content-center align-items-center">
+        <div class="row">
+          <div id="maxDiscount" class="col-5 align-self-center"></div>
+          <div class="col-4 ms-2 p-2">
+            <button
+              id="applyButton"
+            
+	         class="ps-2 btn btn-success btn-hover"
+              onclick="applyCoupon()"
+               disabled
+               >
+                Apply
+                </button>
+                   </div>
+                     </div>
+                      </div>
       </div>
     </div>
   </div>
-  </div> -->
+  </div> 
+ 
  <!-- -----------------------------------test---------------------------  >
 
                                         <!- <form action="#">
@@ -456,7 +484,7 @@
 							</div>
 						</div>
 						<input type="hidden" value="<%= orderData._id %>" name="id">
-		            </form>
+		            </div>
 		             </div>
 				</div>
 			</div>
